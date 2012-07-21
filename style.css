@@ -1,0 +1,19 @@
+/*
+
+Copyright 2011 Uiri Noyb
+This work is released under the GNU General Public License, version 3 or greater. You should have received a copy of this license with this theme. If not, try <http://gnu.org/licenses/gpl.html>
+
+*/
+
+html, body, #wrapper { height:100% }
+body { background-color:#006 }
+.entry p, .comment p, #wrapper, #branding, body {margin-bottom:0;margin-top:0}
+#wrapper { width:850px;margin-left:auto;margin-right:auto;text-align:center;border-color:#66F;border-width:5px;border-style:solid;background-color:#FFF }
+.entry, .comments {text-align:justify;line-height:135%}
+#branding { background-color:#66F;color:#FFF;padding:10px; }
+#branding a { color:#FFF }
+.pagination {width:250px}
+#search {width:300px}
+#branding, .title, .navigation, .welcome, .entry, .comments, #comment textarea {width:500px}
+.newpost{float:left;}
+.oldpost{float:right;}

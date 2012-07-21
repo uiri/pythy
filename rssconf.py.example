@@ -1,0 +1,3 @@
+url = "http://blog.example.com/" # URL to your blog
+xmltitle = "Example Blog feed" # Title of RSS Feed
+xmldescription = "RSS feed description for the Example Blog" # RSS feed description

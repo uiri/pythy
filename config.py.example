@@ -1,0 +1,11 @@
+import cgi, cgitb, time, datetime, sqlite3, iso8601, os
+
+cgitb.enable(display=0, logdir="../tmp")
+
+url = "" # blog url
+autoapproved = False # turn off automatic comment approval
+authortoname = { 'name in postinfo' : 'NAME IN NOTICE' }
+notice = open("notice.html").read() # notice at the bottom of every post.
+iscommentingopen = True # Allow commenting
+content_type_charset = "Content-type: text/html;charset=UTF-8" # Content type and charset
+banlist = ['127.0.0.1'] # ip banlist

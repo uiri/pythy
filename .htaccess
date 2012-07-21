@@ -1,0 +1,20 @@
+<Files ./postinfo>
+       order deny,allow
+       deny from all
+</Files>
+<Files ./commentlist>
+       order deny,allow
+       deny from all
+</Files>
+<Files ./pythy.db>
+       order deny,allow
+       deny from all
+</Files>
+RewriteEngine On
+RewriteCond %{DOCUMENT_ROOT}/posts/$1 !-f
+RewriteRule ^posts/([A-Za-z0-9]+)/?$ /blog/post.py?post=$1
+RewriteRule ^posts/?$ /blog/index.py?page=0
+RewriteCond %{DOCUMENT_ROOT}/page/$1 !-f
+RewriteRule ^page/([0-9][0-9]?)/?$ /blog/index.py?page=$1
+RewriteRule ^page/?$ /blog/index.py
+RewriteRule %{DOCUMENT_ROOT}/rss/?$ /blog/rss.py
