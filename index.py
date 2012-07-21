@@ -18,7 +18,7 @@ for entry in entries:
         elif minpage <= counter < page:
             posts.append(entry)
         counter = counter + 1
-prefix = "./p/"
+
 execfile("display.py")
 search = False
 execfile("page.py")
