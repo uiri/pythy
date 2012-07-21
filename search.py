@@ -8,7 +8,6 @@ else:
         page = int(form.getvalue('page'))*5
     minpage = page - 5
     counter = 0
-    prefix = "./p/"
     entries = infofile.read().split("--------------------")
     for entry in entries:
         entry = entry.split("\n")
