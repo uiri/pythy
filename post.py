@@ -23,7 +23,6 @@ for entry in entries:
 if len(posts) == 0:
     print open("404.html").read()
 else:
-    prefix = "./p/"
     execfile("display.py")
     postnav = ""
     if postnum > minpostnum:
