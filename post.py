@@ -30,30 +30,31 @@ else:
         postnav += """<span class="newpost"><a href="""+url+"posts/" + entries[postnum-1].split("\n")[4].split(".")[0] + """/>&laquo; Next Post</a></span>"""
     if postnum < len(entries)-1:
         postnav += """                <span class="oldpost"><a href="""+url+"posts/" + entries[postnum+1].split("\n")[4].split(".")[0] + """/>Previous Post &raquo;</a></span>"""
-    commentpost = posts[0][4].split(".")[0]
-    comments = []
-    if os.path.isfile("commentlist."+commentpost):
-        commentslistfile = open("commentlist."+commentpost).read().split("--------------------")
-        for comment in commentslistfile:
-            comments.append(comment.split("\n")[1:])
-            if comments[-1] == []:
-                comments.pop()
-            elif comments[-1][0] != commentpost:
-                comments.pop()
-            elif comments[-1][3] in banlist or not bool(comments[-1][5]):
-                comments.pop()
-    commentstext = ""
-    if len(comments):
-        if len(comments) == 1:
-            respnum = "1 Response"
-        else:
-            respnum = str(len(comments)) + " Responses"
-        commentstext += """<ul class="commentlist">"""
-        for comment in comments:
-            commentstext += open("comment.html").read().replace("{{author}}", comment[1]).replace("{{date}}", iso8601.parse_date(comment[2]).strftime('%b %d %Y at %H:%M')).replace("{{content}}", comment[4])
-        commentstext += """</ul>"""
-    else:
-        respnum = "No Responses"
+    if iscommentingopen:
+        commentpost = posts[0][4].split(".")[0]
+        comments = []
+        if os.path.isfile("commentlist."+commentpost):
+            commentslistfile = open("commentlist."+commentpost).read().split("--------------------")
+            for comment in commentslistfile:
+                comments.append(comment.split("\n")[1:])
+                if comments[-1] == []:
+                    comments.pop()
+                elif comments[-1][0] != commentpost:
+                    comments.pop()
+                elif comments[-1][3] in banlist or not bool(comments[-1][5]):
+                    comments.pop()
         commentstext = ""
-    print open("post.html").read().replace("{{postnav}}", postnav).replace("{{respnum}}", respnum).replace("{{title}}", posts[0][1]).replace("{{comments}}", commentstext).replace("{{postto}}", commentpost)
+        if len(comments):
+            if len(comments) == 1:
+                respnum = "1 Response"
+            else:
+                respnum = str(len(comments)) + " Responses"
+            commentstext += """<ul class="commentlist">"""
+            for comment in comments:
+                commentstext += open("comment.html").read().replace("{{author}}", comment[1]).replace("{{date}}", iso8601.parse_date(comment[2]).strftime('%b %d %Y at %H:%M')).replace("{{content}}", comment[4])
+            commentstext += """</ul>"""
+        else:
+            respnum = "No Responses"
+            commentstext = ""
+        print open("post.html").read().replace("{{postnav}}", postnav).replace("{{respnum}}", respnum).replace("{{title}}", posts[0][1]).replace("{{comments}}", commentstext).replace("{{postto}}", commentpost)
 execfile("footer.py")
