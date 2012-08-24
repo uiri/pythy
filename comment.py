@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 
 execfile('config.py')
-print content_type_charset
 
-form = cgi.FieldStorage()
 validPost = False
-infofile = open("./postinfo")
 entries = infofile.read().split("--------------------")
 for entry in entries:
     entry = entry.split("\n")

@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+try:
+    form
+except NameError:
+    execfile("config.py")
 execfile("header.py")
 if "page" not in form:
     page = 5

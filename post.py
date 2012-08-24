@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-execfile("header.py")
+execfile("config.py")
 postnum = 0
 minpostnum = 0
 entries = infofile.read().split("--------------------")
@@ -23,6 +23,9 @@ for entry in entries:
 if len(posts) == 0:
     print open("404.html").read()
 else:
+    if len(posts) == 1:
+        title = posts[0][1] + " &mdash; " + title
+    execfile("header.py")
     execfile("display.py")
     postnav = ""
     if postnum > minpostnum:

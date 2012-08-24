@@ -1,7 +1,8 @@
-execfile("header.py")
+execfile("config.py")
 if "q" not in form or form.getvalue('q') == "":
     execfile("index.py")
 else:
+    execfile("header.py")
     if "page" not in form:
         page = 5
     else:
